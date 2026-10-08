@@ -1,0 +1,11 @@
+export const inp = "w-full border rounded-lg px-3 py-2 text-sm mb-3";
+export const Card = ({ title, children, className = "" }) => <div className={`bg-white rounded-xl shadow-sm border p-5 ${className}`}>{title && <h3 className="font-semibold text-slate-700 mb-3">{title}</h3>}{children}</div>;
+export const Stat = ({ label, value }) => <Card><div className="text-sm text-slate-500">{label}</div><div className="text-3xl font-bold text-teal-600">{value ?? 0}</div></Card>;
+export const Loading = () => <p className="text-slate-500">Loading…</p>;
+export const Empty = ({ text }) => <p className="text-slate-400 py-6 text-center">{text}</p>;
+export const Alert = ({ msg, ok }) => msg ? <p className={`p-3 rounded mb-3 text-sm ${ok ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}>{msg}</p> : null;
+export const Btn = ({ className = "", ...p }) => <button {...p} className={`px-3 py-1.5 rounded-lg text-sm font-medium bg-teal-600 text-white hover:bg-teal-700 disabled:opacity-50 ${className}`} />;
+const colors = { PENDING: "bg-amber-100 text-amber-700", CONFIRMED: "bg-blue-100 text-blue-700", COMPLETED: "bg-green-100 text-green-700", CANCELLED: "bg-red-100 text-red-700" };
+export const Badge = ({ s }) => <span className={`px-2 py-0.5 rounded-full text-xs ${colors[s]}`}>{s}</span>;
+export const Table = ({ head, children }) => <div className="overflow-x-auto"><table className="w-full text-sm text-left"><thead><tr className="text-slate-500 border-b">{head.map(h => <th key={h} className="py-2 pr-4">{h}</th>)}</tr></thead><tbody>{children}</tbody></table></div>;
+export const Modal = ({ title, onClose, children }) => <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50 noprint"><div className="bg-white rounded-xl p-6 w-full max-w-md max-h-[90vh] overflow-auto"><div className="flex justify-between mb-3"><h3 className="font-semibold">{title}</h3><button onClick={onClose}>✕</button></div>{children}</div></div>;
